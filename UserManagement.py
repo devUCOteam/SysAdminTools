@@ -55,9 +55,10 @@ def add_passwd(username,uid=None):
                 pass
 
     home_directory = "/home/%s"%(username)
-    user_line = "%s:x:%s:%s:%s:%s:/bin/bash \n"%(username,uid,uid,username,home_directory)
+    terminal = "/bin/zsh"
+    user_line = "%s:x:%s:%s:%s:%s:%s"%(username,uid,uid,username,home_directory,terminal)
     passwd = open("/etc/passwd", 'a')
-    passwd.write(str(user_line))
+    passwd.write(str(user_line)+"\n")
     passwd.close()
     #Creamos el grupo para el usuario invidual
     group_line = "%s:x:%s:"%(username,uid)
